@@ -9,3 +9,7 @@ app.use(cookieParser())
 
 // motor de plantilla
 app.set('view engine','ejs')
+
+app.listen(3200, () => {
+    console.log('servidor ejecutandose')
+})
