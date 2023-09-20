@@ -10,6 +10,11 @@ app.use(cookieParser())
 // motor de plantilla
 app.set('view engine','ejs')
 
+
+app.get('/', (req,res)=>{
+    res.render('home')
+})
+
 app.listen(3200, () => {
     console.log('servidor ejecutandose')
 })
