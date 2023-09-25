@@ -13,11 +13,29 @@ app.use(cookieParser())
 app.set('view engine','ejs')
 
 // conection database MONGO DB ATLAS
+const dbUrl = 'mongodb+srv://lopeznnr:prSI2oL89tcO40dw@cluster0.ml3lhxv.mongodb.net/?retryWrites=true&w=majority'
 
-const dbUrl = 'mongodb+srv://lopeznnr:<password>@cluster0.7cmpogq.mongodb.net/?retryWrites=true&w=majority'
-mongoose.connect(dbUrl)
-.then((result)=>app.listen(3200))
-.catch((error)=>console.log(error))
+const connectToDatabase = async () => {
+  try {
+    const result = await mongoose.connect(dbUrl);
+    console.log('Conexión exitosa a la base de datos');
+    app.listen(3200, () => {
+      console.log('Servidor iniciado en el puerto 3200');
+    });
+  } catch (error) {
+    console.error('Error al conectar a la base de datos:', error);
+  }
+}
+
+connectToDatabase();
+
+
+
+// mongoose.connect(dbUrl)
+// .then((result)=>app.listen(3200))
+// .catch((error)=>console.log(error))
+
+
 
 app.get('/', (req,res)=>{
     res.render('home')
