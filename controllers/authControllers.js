@@ -1,10 +1,11 @@
 const User = require ('../models/User')
 
-module.exports.signup_post=(req,res)=>{
+module.exports.signup_post= async (req,res)=>{
     // destructuring
     const {email,password}=req.body
+    
     try{
-        const user = User.create({email,password})
+        const user = await User.create({email,password})
         res.status(201).json(user)
     }catch(error){
         console.log(error)
