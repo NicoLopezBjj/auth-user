@@ -4,6 +4,10 @@ const User = require ('../models/User')
 const handleErrors=(err)=>{
     console.log(err.message,err.code)
     let error = {email:'',password:''}
+// validacion de errores
+    if(err.message.includes('usuarios validation failed')){
+        console.log(Object.values(err.errors))
+    }
 }
 
 module.exports.signup_post= async (req,res)=>{
